@@ -35,6 +35,8 @@ spec:
   env:
     - name: POC_HOST
       value: {{ingress}}
+  envFrom:
+    - secret: mock-sendinn
   accessPolicy:
     inbound:
       rules:
