@@ -1,0 +1,41 @@
+---
+apiVersion: nais.io/v1alpha1
+kind: Application
+metadata:
+  name: mock-sendinn
+  namespace: skjemadigitalisering
+  labels:
+    team: skjemadigitalisering
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "50M"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
+spec:
+  image: {{image}}
+  port: 8080
+  tokenx:
+    enabled: true
+  ingresses:
+    - {{ingress}}
+  liveness:
+    path: /internal/isAlive
+    initialDelay: 10
+  readiness:
+    path: /internal/isReady
+    initialDelay: 10
+  replicas:
+    min: 1
+    max: 1
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 200m
+      memory: 256Mi
+  env:
+    - name: POC_HOST
+      value: {{ingress}}
+  accessPolicy:
+    inbound:
+      rules:
+        - application: skjemautfylling-experimental

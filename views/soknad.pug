@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title Send Inn :: Søknad
+  body
+    h1 Send Inn :: Last opp vedlegg
+    div Id: #{id}
+    div Title: #{soknad.tittel}
+    div Tema: #{soknad.tema}
+    div Skjemanr: #{soknad.skjemanr}
+    button(type='button' onclick='window.open("' + soknad.pdfUrl + '")') Last ned søknad
+    h2 Vedleggsliste
+    ul
+    each val in soknad.vedleggsListe
+      li #{val.tittel} (#{val.vedleggsnr}) - Label='#{val.label}'
