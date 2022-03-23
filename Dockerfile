@@ -5,6 +5,7 @@ WORKDIR /app
 
 COPY node_modules node_modules
 COPY views views
+COPY security security
 COPY server.js server.js
 
 CMD ["node", "server.js"]
