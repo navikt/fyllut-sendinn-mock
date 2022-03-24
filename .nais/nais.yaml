@@ -33,7 +33,7 @@ spec:
       cpu: 200m
       memory: 256Mi
   env:
-    - name: POC_HOST
+    - name: MOCK_HOST
       value: {{ingress}}
   envFrom:
     - secret: mock-sendinn

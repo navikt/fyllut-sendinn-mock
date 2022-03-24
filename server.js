@@ -6,7 +6,7 @@ const tokenxAuthHandler = require("./security/tokenxAuthHandler");
 
 const soknadCache = new NodeCache();
 
-const HOST = process.env.POC_HOST;
+const HOST = process.env.MOCK_HOST;
 
 const app = express();
 
