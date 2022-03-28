@@ -62,8 +62,8 @@ app.get("/fyllUt/pdf/:id", function (req, res) {
    const soknad = soknadCache.get(soknadUuid);
    res.type('application/pdf');
    res.header('Content-Disposition', `attachment; filename="${soknadUuid}.pdf"`);
-   const pdfContent = soknad.hoveddokument.document[0].replace("data:application/pdf;base64,", "");
-   res.send(Buffer.from(pdfContent, "base64"));
+   const {document} = soknad.hoveddokument;
+   res.send(Buffer.from(document));
 });
 
 const port = parseInt(process.env.PORT || "9000");
